@@ -1,13 +1,13 @@
-//ordenacion por intercambio directo
 #include<iostream>
 using namespace std;
+//ordenacion por intercambio directo
 
 void ord_array_derecha(int n, int array[] ){
 	// por la derecha
 	int aux;
 	for (int i=0 ; i<n-1; i++){
 		for(int j=0; j<n-1-i; j++){
-			if (array[j] = array[j+1]){
+			if (array[j] > array[j+1]){
 				aux = array[j];
 				array[j] = array [j+1];
 				array[j+1]= aux;
@@ -36,7 +36,7 @@ int main (){
 	
 	ord_array_derecha (N,array);
 	
-	cout << "Arreglo ordenado: ";
+	cout << "Arreglo ordenado: " << endl;
     for (int i = 0; i < N; i++) {
         cout << array[i] << " ";
     }
