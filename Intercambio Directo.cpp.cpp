@@ -30,6 +30,26 @@ void ord_array_izquierda(int n, int array[]){
 	}
 }
 
+void ord_array_con_senial(int n, int array[]) {
+    // con señal (centinela)
+    int centinela = 1;
+    int i = 1;
+    int aux;
+    
+    while (i <= n-1 && centinela == 1) {
+        centinela = 0;
+        for (int j = 0; j < n-i; j++) {  
+            if (array[j] > array[j+1]) {
+                aux        = array[j];
+                array[j]   = array[j+1];
+                array[j+1] = aux;
+                centinela = 1;
+            }
+        }
+        i = i + 1;
+    }
+}
+
 void solicitar_datos(int &N, int array[]){
 	cout <<"\n   BIENVENIDO AL PROGRAMA DE ORDENACION DE LOS ELEMENTOS DE UN ARREGLO   " << endl;
 	cout <<"\n Ingrese el numero de elementos del arreglo: ";
@@ -62,7 +82,7 @@ int menu_opciones(){
 	cout << "  MENU DE OPCIONES DE ORDENAMIENTO DIRECTO  \n"<<endl;
 	cout <<"1.Intercambio directo por la derecha  " << endl;
 	cout <<"2.Intercambio directo por la izqueirda" << endl;
-	cout <<"3.Intercambio directo con señal       " << endl,
+	cout <<"3.Intercambio directo con señal       " << endl;
 	cout <<"4.Intercambio directo bidireccional   " << endl;
 	cout <<"5.Salir del programa                  " << endl;
 	cout <<"\nSeleccione un opcion: ";
@@ -88,8 +108,9 @@ int main (){
 				mostrar_arreglo_ordenado(N, array);
 				break;
 			case 3:
-				//
-				
+				solicitar_datos(N, array);
+                ord_array_con_senial(N, array);
+                mostrar_arreglo_ordenado(N, array);
 				break;
 			case 4:
 				//
