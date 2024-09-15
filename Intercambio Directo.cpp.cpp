@@ -51,40 +51,35 @@ void ord_array_con_senial(int n, int array[]) {
 }
 
 void ord_array_bidireccional(int n, int array[]){
-    int izquierda = 0;
-    int derecha = n - 1;
-    bool intercambio = true; 
+    int izq = 1;
+    int der = n-1;
+    int k   = n-1;
     int aux;
-    
-    while (intercambio){
-        intercambio = false;
-        
-        for (int i = izquierda; i < derecha; i++){
-            if (array[i] > array[i+1]){
-                aux        = array[i];
-                array[i]   = array[i+1];
-                array[i+1] = aux;
-                intercambio= true;
-            }
-        }
-        
-        if (!intercambio ) break;
-        
-        intercambio  = false;
-        derecha--; 
-        
-        for (int i = derecha; i > izquierda; i--){
-            if (array[i-1] > array[i]){
+
+    while (izq <= der) {
+
+        for (int i = der; i >= izq; i--) {
+            if (array[i-1] > array[i]) {
                 aux        = array[i-1];
                 array[i-1] = array[i];
                 array[i]   = aux;
-                intercambio= true;
+                k  = i;
             }
         }
-        
-        izquierda++; 
+        izq = k + 1;
+
+        for (int i = izq; i <= der; i++) {
+            if (array[i-1] > array[i]) {
+                aux        = array[i-1];
+                array[i-1] = array[i];
+                array[i]   = aux;
+                k  = i;
+            }
+        }
+        der = k - 1;
     }
 }
+
 void solicitar_datos(int &N, int array[]){
 	cout <<"\n   BIENVENIDO AL PROGRAMA DE ORDENACION DE LOS ELEMENTOS DE UN ARREGLO   " << endl;
 	cout <<"\n Ingrese el numero de elementos del arreglo: ";
