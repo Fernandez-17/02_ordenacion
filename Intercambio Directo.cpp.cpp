@@ -3,7 +3,7 @@ using namespace std;
 //ordenacion por intercambio directo
 
 void ord_array_derecha(int n, int array[] ){
-	// por la derecha
+	// Por la derecha
 	int aux;
 	for (int i=0 ; i<n-1; i++){
 		for(int j=0; j<n-1-i; j++){
