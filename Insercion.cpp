@@ -28,7 +28,7 @@ void mostrar_arreglo_ordenado(int array[],int n){
 	cout << endl;
 }
 
-int Funcion_insercion_directa( int array [],int n){
+void Funcion_insercion_directa( int array [],int n){
 	int aux, k;
 	for ( int i=1 ; i <n ;i++){
 		 aux = array [i];
@@ -41,14 +41,15 @@ int Funcion_insercion_directa( int array [],int n){
 	}
 }
 
-int Funcion_insercion_binaria( int array [],int n){
+void Funcion_insercion_binaria( int array [],int n){
 	int aux,izq,der,m,j;
 	for ( int i=1 ; i <n ;i++){
 	    aux = array [i];
 		izq =0;
 		der = i-1;
+		
 		while ( izq <= der){
-			m =(izq + der ) /2;
+			m = (izq + der ) /2;
 			if (aux < array [m]){
 				der = m -1;
 			} else{
@@ -58,7 +59,7 @@ int Funcion_insercion_binaria( int array [],int n){
 		j = i -1 ;
 		while ( j >= izq ){
 			array [j+1] = array [j];
-			j = j--; 
+			j = j-1; 
 		}
 		array [izq] = aux;
 	}
@@ -69,8 +70,8 @@ int main (){
 	int N, opcion;
 	
 	do {
-	cout << "    MENU DE ORDENAMIENTO POR INSERCION " << endl;
-	cout << "1.Mentodo insercion directa" << endl;
+	cout << "\n    MENU DE ORDENAMIENTO POR INSERCION \n" << endl;
+	cout << "1.Metodo insercion directa" << endl;
 	cout << "2.Metodo insercion binaria " << endl;
 	cout << "3.Salir del programa"        << endl;
 	cout << "\n Seleccione una opcion : ";
@@ -78,14 +79,15 @@ int main (){
 	
 	    switch(opcion){
 		    case 1: 
-		    solicitar_datos(array,N);
-			Funcion_insercion_directa(array,N);
-			mostrar_arreglo_ordenado(array,N);
-			break;
+		        solicitar_datos(array,N);
+				Funcion_insercion_directa(array,N);
+				mostrar_arreglo_ordenado(array,N);
+				break;
 		    case 2: 
-			solicitar_datos(array,N);
-			Funcion_insercion_binaria(array,N);
-			mostrar_arreglo_ordenado(array,N);
+			    solicitar_datos(array,N);
+				Funcion_insercion_binaria(array,N);
+				mostrar_arreglo_ordenado(array,N);
+				break;
 		    case 3:
 			cout << "    Saliendo del programa .  .  .  " << endl;
 			}
